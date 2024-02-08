@@ -1,0 +1,19 @@
+﻿Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "gd-mono-thirdpersoncontroller", "gd-mono-thirdpersoncontroller.csproj", "{CBC1C114-5310-4736-90B5-78965BF83BEC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+	Debug|Any CPU = Debug|Any CPU
+	ExportDebug|Any CPU = ExportDebug|Any CPU
+	ExportRelease|Any CPU = ExportRelease|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CBC1C114-5310-4736-90B5-78965BF83BEC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CBC1C114-5310-4736-90B5-78965BF83BEC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CBC1C114-5310-4736-90B5-78965BF83BEC}.ExportDebug|Any CPU.ActiveCfg = ExportDebug|Any CPU
+		{CBC1C114-5310-4736-90B5-78965BF83BEC}.ExportDebug|Any CPU.Build.0 = ExportDebug|Any CPU
+		{CBC1C114-5310-4736-90B5-78965BF83BEC}.ExportRelease|Any CPU.ActiveCfg = ExportRelease|Any CPU
+		{CBC1C114-5310-4736-90B5-78965BF83BEC}.ExportRelease|Any CPU.Build.0 = ExportRelease|Any CPU
+	EndGlobalSection
+EndGlobal
