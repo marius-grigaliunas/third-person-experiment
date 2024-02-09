@@ -2,6 +2,7 @@ using Godot;
 using System;
 using System.ComponentModel;
 using System.Diagnostics;
+using System.Numerics;
 using System.Threading.Tasks;
 
 public partial class Main : WorldEnvironment
@@ -31,15 +32,21 @@ public partial class Main : WorldEnvironment
 		thirdPersonCharacter.isActive = false;
 		broom.isActive = true;
 		GD.Print("Broom mode");
-
-		thirdPersonCharacter.Transform = broom.Transform;
+		RemoveChild(thirdPersonCharacter);
+		broom.AddChild(thirdPersonCharacter);
+		thirdPersonCharacter.Position = Godot.Vector3.Zero;
+		thirdPersonCharacter.CollisionLayer = 32;
 	}
 
 	public void _SetPlayerMode() {
         thirdPersonCharacter.isActive = true;
         broom.isActive = false;
-		
+
 		GD.Print("Third person mode");
+
+		broom.RemoveChild(thirdPersonCharacter);
+		AddChild(thirdPersonCharacter);
+		thirdPersonCharacter.Position = broom.Position + Godot.Vector3.One;
     }
 }
 

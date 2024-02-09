@@ -100,5 +100,5 @@ jumpVelocity = 10.0
 gravity = 10.0
 
 [node name="Broom" parent="." node_paths=PackedStringArray("manager") instance=ExtResource("4_7fdcn")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0.840825, -19)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0.840825, -7.67743)
 manager = NodePath("..")

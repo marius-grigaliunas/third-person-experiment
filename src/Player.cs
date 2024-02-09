@@ -33,6 +33,8 @@ public partial class Player : CharacterBody3D
 
 
 		}
+
+		
 	}
 	public override void _PhysicsProcess(double delta)
 	{
@@ -98,5 +100,10 @@ public partial class Player : CharacterBody3D
 		if(body.GetType() == typeof(Broom)) {
             canSwitchMode = false;
         }
+	}
+
+	public void setChild(Node3D parent) {
+		Node3D playerNode = GetNode<Node3D>("player");
+		parent.AddChild(playerNode);
 	}
 }
