@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://dg14ehlk5g570"]
+
+[ext_resource type="Script" path="res://src/Broom.cs" id="1_g4o1u"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_51qox"]
+radius = 0.2
+height = 5.0
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_eprw8"]
+top_radius = 0.6
+bottom_radius = 0.221
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_70a1m"]
+radius = 0.8
+height = 7.0
+
+[node name="Broom" type="CharacterBody3D"]
+script = ExtResource("1_g4o1u")
+
+[node name="Body" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+mesh = SubResource("CapsuleMesh_51qox")
+
+[node name="Tail" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 3.29517)
+mesh = SubResource("CylinderMesh_eprw8")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 1.01875)
+shape = SubResource("CapsuleShape3D_70a1m")
