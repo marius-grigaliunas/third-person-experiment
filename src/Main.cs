@@ -44,7 +44,6 @@ public partial class Main : WorldEnvironment
         broom.isActive = false;
 
 		GD.Print("Third person mode");
-
 		broom.RemoveChild(thirdPersonCharacter);
 		AddChild(thirdPersonCharacter);
 		thirdPersonCharacter.Position = broom.Position + Godot.Vector3.One;
