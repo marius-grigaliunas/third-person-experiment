@@ -35,6 +35,7 @@ public partial class Main : WorldEnvironment
 		RemoveChild(thirdPersonCharacter);
 		broom.AddChild(thirdPersonCharacter);
 		thirdPersonCharacter.Position = Godot.Vector3.Zero;
+		thirdPersonCharacter.GetNode<MeshInstance3D>("collision/body").Rotation = Godot.Vector3.Zero;
 		thirdPersonCharacter.CollisionLayer = 32;
 	}
 

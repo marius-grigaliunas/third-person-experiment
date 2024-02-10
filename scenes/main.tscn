@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://dqyb5g1lyurfj"]
+[gd_scene load_steps=15 format=3 uid="uid://dqyb5g1lyurfj"]
 
 [ext_resource type="PackedScene" uid="uid://b2ncexsbkd2ca" path="res://scenes/player.tscn" id="1_1hi18"]
 [ext_resource type="PackedScene" uid="uid://d1vd7piwykivy" path="res://scenes/cube.tscn" id="1_pwidk"]
@@ -34,10 +34,16 @@ albedo_color = Color(0.243137, 0.568627, 0.266667, 1)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_p3q8d"]
 material = SubResource("StandardMaterial3D_5miin")
-size = Vector2(10, 10)
+size = Vector2(100, 100)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_pxtb0"]
-size = Vector3(70, 0.1, 70)
+size = Vector3(700, 0.1, 700)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_wt1b4"]
+size = Vector3(26, 26, 26)
+
+[sub_resource type="BoxMesh" id="BoxMesh_psi5g"]
+size = Vector3(26, 26, 26)
 
 [node name="main" type="WorldEnvironment" node_paths=PackedStringArray("thirdPersonCharacter", "broom")]
 environment = SubResource("Environment_3olxv")
@@ -57,9 +63,40 @@ skeleton = NodePath("../..")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0)
 shape = SubResource("BoxShape3D_pxtb0")
 
-[node name="cube" parent="." instance=ExtResource("1_pwidk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.01142, 1.34967, -1.56281)
-gravity_scale = 0.022
+[node name="cube" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.011, 13, -227.68)
+mass = 47.05
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="cube"]
+transform = Transform3D(0.992566, 0, 0, 0, 0.992566, 0, 0, 0, 0.992566, 0, 0, 0)
+shape = SubResource("BoxShape3D_wt1b4")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="cube"]
+mesh = SubResource("BoxMesh_psi5g")
+skeleton = NodePath("../..")
+
+[node name="cube10" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35.3469, 13, -227.68)
+mass = 47.05
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="cube10"]
+transform = Transform3D(0.992566, 0, 0, 0, 0.992566, 0, 0, 0, 0.992566, 0, 0, 0)
+shape = SubResource("BoxShape3D_wt1b4")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="cube10"]
+mesh = SubResource("BoxMesh_psi5g")
+skeleton = NodePath("../..")
+
+[node name="cube11" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 54.243, 13, -227.68)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="cube11"]
+transform = Transform3D(0.992566, 0, 0, 0, 0.992566, 0, 0, 0, 0.992566, 0, 0, 0)
+shape = SubResource("BoxShape3D_wt1b4")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="cube11"]
+mesh = SubResource("BoxMesh_psi5g")
+skeleton = NodePath("../..")
 
 [node name="cube2" parent="." instance=ExtResource("1_pwidk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.01142, 5.82578, -0.0288467)

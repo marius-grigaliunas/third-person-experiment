@@ -9,20 +9,22 @@ public partial class Broom : CharacterBody3D
 
 	public bool isActive = false;
 
-	[Export] float min_flight_speed = 2;
-	[Export] float max_flight_speed = 50;
-	[Export] float turn_speed = 0.75f;
-	[Export] float pitch_speed = 0.5f;
+	[Export] float min_flight_speed = 0;
+	[Export] float max_flight_speed = 30;
+	[Export] float turn_speed = 0.03f;
+	[Export] float pitch_speed = 0.01f;
 	[Export] float level_speed = 3.0f;
 	[Export] float throttle_delta = 30f;
 	[Export] float acceleration = 10f;
 
 	[Export] float forward_speed = 0;
 	[Export] float target_speed = 0;
+	[Export] float impulseForce = 6;
 	bool grounded = false;
 	Godot.Vector3 velocity = Vector3.Zero;
 	float turn_input = 0;
 	float pitch_input = 0;
+	
 
 
 
@@ -41,11 +43,23 @@ public partial class Broom : CharacterBody3D
     {
 		if(isActive) {
 			getInput(delta);
-			GD.Print("mobe");
 			forward_speed = (float)Mathf.Lerp((double)forward_speed, (double)target_speed, (double)acceleration * delta);
+			
 			Velocity = -Transform.Basis.Z * forward_speed;
-			GD.Print(Velocity);
+			// RotateZ(turn_input * turn_speed);
+			// RotateX(pitch_input * pitch_speed);
+
+			RotateObjectLocal(new Vector3(1, 0, 0), pitch_input * pitch_speed * forward_speed / 10f); 
+			RotateObjectLocal(new Vector3(0, 0, 1), turn_input * turn_speed);
 			MoveAndSlide();
+
+			for(int i = 0; i < GetSlideCollisionCount(); i++) {
+				KinematicCollision3D collision = GetSlideCollision(i);
+				if(collision.GetCollider().GetType() == typeof(RigidBody3D)) {
+					RigidBody3D colliderRigidBody = (RigidBody3D)collision.GetCollider();
+					colliderRigidBody.ApplyCentralImpulse(-collision.GetNormal() * forward_speed * impulseForce);
+				}
+			}
 		}
 
 	}
